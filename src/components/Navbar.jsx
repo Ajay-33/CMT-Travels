@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { FaBars } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,7 +17,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-blue-900 mx-auto flex justify-between items-center py-4 px-6 sticky top-0 z-50 shadow-lg text-white">
+    <nav className="bg-blue-900 mx-auto flex justify-between items-center py-4 px-6 sticky top-0 z-50 shadow-xl text-white">
       {/* Logo Section */}
       <div>
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -26,9 +28,7 @@ const Navbar = () => {
       {/* Navigation Links */}
       <div className="flex items-center">
         {/* Desktop Menu */}
-        <ul
-          className={`hidden md:flex space-x-8 text-sm sm:text-base md:text-lg lg:text-xl`}
-        >
+        <ul className="hidden md:flex space-x-8 text-sm sm:text-base md:text-lg lg:text-xl">
           <li>
             <button
               onClick={() => scrollToSection("home")}
@@ -73,16 +73,21 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition duration-300"
+          className="md:hidden bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition duration-300 flex items-center justify-center"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          Menu
+          <FaBars className="text-white h-6 w-6" />
         </button>
       </div>
 
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
-        <ul className="absolute top-16 left-0 right-0 bg-blue-900 text-white py-4 flex flex-col items-center space-y-6 md:hidden">
+        <motion.ul
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="absolute top-16 left-0 right-0 mt-2 bg-blue-900 text-white py-6 flex flex-col items-center space-y-4 md:hidden border-t border-yellow-300 rounded-b-lg shadow-lg"
+        >
           <li>
             <button
               onClick={() => scrollToSection("home")}
@@ -123,7 +128,7 @@ const Navbar = () => {
               Contact Us
             </button>
           </li>
-        </ul>
+        </motion.ul>
       )}
     </nav>
   );

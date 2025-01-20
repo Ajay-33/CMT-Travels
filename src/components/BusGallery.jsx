@@ -105,7 +105,6 @@ const BusGallery = () => {
       </motion.h2>
 
       <motion.div
-        className="relative flex-grow"
         initial="hidden"
         whileInView="visible"
         variants={galleryVariants}
@@ -113,8 +112,9 @@ const BusGallery = () => {
         <Swiper
           modules={[Navigation]}
           navigation
-          spaceBetween={30}
+          spaceBetween={20}
           slidesPerView={2}
+          autoHeight={true}
           breakpoints={{
             320: { slidesPerView: 1 },
             640: { slidesPerView: 1 },
@@ -161,22 +161,22 @@ const BusGallery = () => {
 
       {modalOpen && (
         <motion.div
-          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50"
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
           variants={modalVariants}
           initial="hidden"
           animate="visible"
         >
-          <div className="relative bg-white p-6 md:p-8 rounded-xl max-w-4xl w-full shadow-2xl overflow-hidden my-auto">
+          <div className="relative bg-white p-4 md:p-6 lg:p-8 rounded-xl max-w-2xl sm:max-w-lg w-full mx-2 shadow-2xl overflow-hidden my-auto">
             {/* Close Button */}
             <button
               onClick={handleCloseModal}
-              className="absolute top-4 right-4 p-2 z-20 bg-red-500 text-white rounded-full hover:bg-red-600 transition-all duration-300"
+              className="absolute top-4 right-4 p-2 z-20 bg-[#FFD700] text-blue-900 rounded-full transition-all duration-300"
             >
               <FaTimes className="h-6 w-6" />
             </button>
 
             {/* Image Display */}
-            <div className="relative shadow-lg max-w-full max-h-[80vh] overflow-hidden flex items-center justify-center">
+            <div className="relative shadow-lg max-w-full max-h-[60vh] sm:max-h-[70vh] overflow-hidden flex items-center justify-center">
               <img
                 src={selectedImage}
                 alt="Full view"
@@ -188,7 +188,7 @@ const BusGallery = () => {
             <div className="flex justify-center mt-6">
               <button
                 onClick={handleDownload}
-                className="bg-[#FFD700] text-blue-900 px-8 py-4 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+                className="bg-[#FFD700] text-blue-900 px-6 py-3 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
               >
                 Download Image
               </button>
@@ -196,9 +196,6 @@ const BusGallery = () => {
           </div>
         </motion.div>
       )}
-
-      <div className="absolute bottom-0 w-full h-20 bg-gradient-to-t from-blue-900 to-transparent overflow-x-hidden"></div>
-
       <style jsx="true">{`
         .swiper-button-next,
         .swiper-button-prev {
@@ -207,7 +204,7 @@ const BusGallery = () => {
           z-index: 10;
           position: absolute;
           top: 50%;
-          background-color: rgba(0, 0, 0, 0.5);
+          background-color: rgba(0, 0, 0, 0.85);
           transition: opacity 0.3s ease, transform 0.3s ease;
           padding: 15px;
           border-radius: 10%;
@@ -237,8 +234,8 @@ const BusGallery = () => {
           .swiper-button-next,
           .swiper-button-prev {
             font-size: 1.8rem;
-            right: 10px;
-            left: 10px;
+            top: 50%;
+            padding: 10px;
           }
         }
 
@@ -260,7 +257,7 @@ const BusGallery = () => {
         @media (max-width: 480px) {
           .swiper-button-next,
           .swiper-button-prev {
-            top: 45%;
+            top: 50%;
           }
         }
       `}</style>

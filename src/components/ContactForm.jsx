@@ -17,12 +17,15 @@ const ContactForm = () => {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.firstName) newErrors.firstName = "First Name is required.";
+    if (!formData.firstName) newErrors.firstName = "Name is required.";
     if (!formData.phone) {
       newErrors.phone = "Phone number is required.";
-    } else if (!/^\d{10}$/.test(formData.phone)) {
-      newErrors.phone = "Phone number must be 10 digits.";
     }
+    else if (!/^\+?\d{10,}$/.test(formData.phone)) {
+      newErrors.phone = "Invalid Phone number";
+    }
+    
+    
     if (!formData.email) {
       newErrors.email = "Email is required.";
     } else if (
@@ -237,7 +240,6 @@ const ContactForm = () => {
           ></p>
         )}
       </div>
-      <div className="absolute bottom-0 w-full h-20 bg-gradient-to-t from-blue-900 to-transparent"></div>
     </section>
   );
 };

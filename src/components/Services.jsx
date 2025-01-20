@@ -28,7 +28,7 @@ const Services = () => {
           initial={{ opacity: 0, y: 100 }}
           transition={{ duration: 0.6 }}
           whileHover={{ scale: 1.2 }}
-          className="flex flex-col items-center text-center bg-blue-900 p-8 rounded-lg shadow-lg w-full sm:w-80"
+          className="flex flex-col items-center text-center bg-blue-900 p-8 rounded-lg shadow-lg w-full sm:w-80 md:w-72 lg:w-80"
         >
           <div className="bg-[#FACC15] text-blue-900 p-6 rounded-full mb-6">
             <FaBus size={40} />
@@ -48,7 +48,7 @@ const Services = () => {
           initial={{ opacity: 0, y: 100 }}
           transition={{ duration: 0.6 }}
           whileHover={{ scale: 1.2 }}
-          className="flex flex-col items-center text-center bg-blue-900 p-8 rounded-lg shadow-lg w-full sm:w-80"
+          className="flex flex-col items-center text-center bg-blue-900 p-8 rounded-lg shadow-lg w-full sm:w-80 md:w-72 lg:w-80"
         >
           <div className="bg-[#FACC15] text-blue-900 p-6 rounded-full mb-6">
             <FaMapMarkedAlt size={40} />
@@ -68,7 +68,7 @@ const Services = () => {
           initial={{ opacity: 0, y: 100 }}
           transition={{ duration: 0.6 }}
           whileHover={{ scale: 1.2 }}
-          className="flex flex-col items-center text-center bg-blue-900 p-8 rounded-lg shadow-lg w-full sm:w-80"
+          className="flex flex-col items-center text-center bg-blue-900 p-8 rounded-lg shadow-lg w-full sm:w-80 md:w-72 lg:w-80"
         >
           <div className="bg-[#FACC15] text-blue-900 p-6 rounded-full mb-6">
             <FaClock size={40} />
@@ -88,7 +88,7 @@ const Services = () => {
           initial={{ opacity: 0, y: 100 }}
           transition={{ duration: 0.6 }}
           whileHover={{ scale: 1.2 }}
-          className="flex flex-col items-center text-center bg-blue-900 p-8 rounded-lg shadow-lg w-full sm:w-80"
+          className="flex flex-col items-center text-center bg-blue-900 p-8 rounded-lg shadow-lg w-full sm:w-80 md:w-72 lg:w-80"
         >
           <div className="bg-[#FACC15] text-blue-900 p-6 rounded-full mb-6">
             <FaHandshake size={40} />
@@ -102,8 +102,6 @@ const Services = () => {
           </p>
         </motion.div>
       </div>
-
-      <div className="absolute bottom-0 w-full h-20 bg-gradient-to-t from-blue-900 to-transparent"></div>
     </section>
   );
 };

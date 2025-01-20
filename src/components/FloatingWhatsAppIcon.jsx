@@ -13,7 +13,7 @@ const FloatingWhatsAppIcon = () => {
       href={`https://wa.me/${phoneNumber}?text=${encodedMessage}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-8 left-8 sm:bottom-4 sm:left-4 md:bottom-8 md:left-8 bg-green-500 p-4 z-50 rounded-full shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl border-4 border-yellow-300"
+      className="fixed bottom-8 right-4 sm:right-6 md:bottom-8 md:right-8 bg-green-500 p-4 z-50 rounded-full shadow-lg hover:scale-110 hover:shadow-2xl border-4 border-yellow-300"
       style={{
         animation: "pulse 1.5s infinite",
       }}

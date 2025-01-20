@@ -2,10 +2,11 @@ import React from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
-const HeroSection = (navbarHeight) => {
+const HeroSection = () => {
   const particlesInit = async (main) => {
     await loadFull(main); // Load the full tsparticles engine
   };
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -29,18 +30,17 @@ const HeroSection = (navbarHeight) => {
           init={particlesInit}
           options={{
             particles: {
-              number: { value: 80 },
-              size: { value: 4 },
+              number: { value: window.innerWidth <= 768 ? 25 : 80 }, // Reduce particles on mobile
+              size: { value: window.innerWidth <= 768 ? 2 : 4 }, // Smaller particles on mobile
               move: {
-                enable: true, // Enable movement
-                speed: 1.5, // Set speed
-                direction: "none", // Random movement
-                outModes: {
-                  default: "out", // Particles should go out of bounds and re-enter
-                },
+                enable: true,
+                speed: 1.5,
+                direction: "none",
+                outModes: { default: "out" },
               },
               links: {
-                enable: true,
+                // enable:  window.innerWidth <= 768 ? false : true,
+                enable:true,
                 color: "#FFFFFF",
                 distance: 200,
               },
@@ -49,9 +49,7 @@ const HeroSection = (navbarHeight) => {
                 anim: { enable: true, speed: 1, opacity_min: 0.1 },
               },
             },
-            fullScreen: {
-              enable: false, // Disable fullscreen to restrict to the parent container
-            },
+            fullScreen: { enable: false },
           }}
           className="absolute inset-0 z-0"
         />
@@ -59,10 +57,10 @@ const HeroSection = (navbarHeight) => {
 
       {/* Content */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 md:px-12 text-center">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 animate-fade-in text-shadow-lg">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate-fade-in text-shadow-lg">
           Welcome to <span className="text-[#FACC15]">CMT Travels</span>
         </h1>
-        <p className="text-lg md:text-2xl mb-6 animate-fade-in-delay">
+        <p className="text-lg sm:text-xl md:text-2xl mb-6 animate-fade-in-delay">
           "Your journey, our priority."
         </p>
         <button
@@ -72,18 +70,6 @@ const HeroSection = (navbarHeight) => {
           Book Your Adventure
         </button>
       </div>
-
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-30"
-        style={{
-          backgroundImage:
-            "https://media.istockphoto.com/id/1371319562/photo/blue-bus-moving-on-the-road-in-city-in-early-morning.jpg?s=612x612&w=0&k=20&c=RGBmQewRifbqaZg92Noup-Dp0JkF7cy7fIyav3Z6Ekg=",
-        }}
-      ></div>
-
-      {/* Wave Effect */}
-      <div className="absolute bottom-0 w-full h-20 bg-gradient-to-t from-blue-900 to-transparent"></div>
     </section>
   );
 };
