@@ -3,26 +3,24 @@ import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import AboutUs from "./components/AboutUs";
 import BusGallery from "./components/BusGallery";
-import FloatingWhatsAppIcon from "./components/FloatingWhatsAppIcon";
 import Footer from "./components/Footer";
 import ContactForm from "./components/ContactForm"; // Added ContactForm
-import './App.css';
+import "./App.css";
 import "animate.css";
 import Services from "./components/Services";
-import FloatingCallNowIcon from "./components/FloatingCallNowIcon";
+import FloatingContactIcons from "./components/FloatingContactIcons";
 
 function App() {
   return (
     <div>
       <Navbar />
-      <HeroSection/>
+      <HeroSection />
       <AboutUs />
-      <Services/>
+      <Services />
       <BusGallery />
-      <ContactForm /> 
+      <ContactForm />
       <Footer />
-      <FloatingWhatsAppIcon />
-      <FloatingCallNowIcon/>
+      <FloatingContactIcons />
     </div>
   );
 }

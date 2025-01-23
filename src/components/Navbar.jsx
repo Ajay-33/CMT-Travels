@@ -20,15 +20,17 @@ const Navbar = () => {
     <nav className="bg-blue-900 mx-auto flex justify-between items-center py-4 px-6 sticky top-0 z-50 shadow-xl text-white">
       {/* Logo Section */}
       <div>
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-          CMT Travels
-        </h1>
+        <img
+          src="/images/logos/logo2.png"
+          alt="CMT Travels Logo"
+          className="h-10 w-auto sm:h-12 md:ml-6 object-contain"
+        />
       </div>
 
       {/* Navigation Links */}
       <div className="flex items-center">
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-8 text-sm sm:text-base md:text-lg lg:text-xl">
+        <ul className="hidden md:flex md:mr-6 space-x-8 text-sm sm:text-base md:text-lg lg:text-xl">
           <li>
             <button
               onClick={() => scrollToSection("home")}

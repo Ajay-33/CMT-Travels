@@ -1,4 +1,5 @@
 import React from "react";
+import { ABOUT_TEXT } from "../constants/constants";
 import { motion } from "framer-motion";
 
 const scrollToSection = (id) => {
@@ -39,13 +40,10 @@ const AboutUs = () => {
           transition={{ duration: 0.5 }}
           className="md:w-1/2 text-center md:text-left px-4"
         >
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed">
-            At <span className="font-bold text-[#FACC15]">CMT Travels</span>, we
-            provide luxurious and affordable travel solutions. Whether you're
-            planning a family vacation, a honeymoon, or a corporate event, we
-            ensure a seamless and memorable experience from start to finish. Let
-            us take care of the details while you focus on creating memories!
-          </p>
+          <p
+            className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: ABOUT_TEXT }}
+          />
 
           {/* Call to Action Button */}
           <div className="mt-6">

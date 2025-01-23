@@ -4,7 +4,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { motion } from "framer-motion";
-import { images } from "../constants";
+import { IMAGES } from "../constants/constants";
 import { FaTimes } from "react-icons/fa";
 
 const imageVariants = {
@@ -61,8 +61,8 @@ const BusGallery = () => {
   }, []);
 
   const groupedImages = [];
-  for (let i = 0; i < images.length; i += rows) {
-    groupedImages.push(images.slice(i, i + rows));
+  for (let i = 0; i < IMAGES.length; i += rows) {
+    groupedImages.push(IMAGES.slice(i, i + rows));
   }
 
   const handleImageClick = (src) => {
@@ -75,16 +75,12 @@ const BusGallery = () => {
     setSelectedImage(null);
   };
 
-  const handleDownload = async () => {
+  const handleDownload = () => {
     try {
-      const response = await fetch(selectedImage);
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
-      link.href = url;
+      link.href = selectedImage;
       link.download = selectedImage.split("/").pop();
       link.click();
-      window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error("Error downloading the image:", error);
     }
@@ -93,7 +89,7 @@ const BusGallery = () => {
   return (
     <section
       id="gallery"
-      className="py-12 mx-auto px-4 sm:px-6 md:px-8 text-center flex flex-col justify-evenly bg-gradient-to-br from-blue-800 via-blue-900 to-indigo-800 text-white min-h-[calc(100vh-4.5rem)]"
+      className="py-12 mx-auto px-4 sm:px-6 md:px-8 text-center flex flex-col justify-evenly bg-gradient-to-br from-blue-800 via-blue-900 to-indigo-800 text-white min-h-[calc(100vh-4.5rem)] sm:min-h-[calc(100vh-5.0rem)]"
     >
       <motion.h2
         whileInView={{ opacity: 1, y: 0 }}
@@ -112,6 +108,7 @@ const BusGallery = () => {
         <Swiper
           modules={[Navigation]}
           navigation
+          lazy
           spaceBetween={20}
           slidesPerView={2}
           autoHeight={true}
@@ -135,7 +132,7 @@ const BusGallery = () => {
                     <img
                       src={src}
                       alt={`Bus ${index * 2 + subIndex + 1}`}
-                      className="w-full h-48 2xl:h-64 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
+                      className="swiper-lazy w-full h-48 2xl:h-64 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
                       onClick={() => handleImageClick(src)}
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

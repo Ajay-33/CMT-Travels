@@ -21,7 +21,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-[calc(100vh-4.5rem)] bg-gradient-to-br from-blue-800 via-blue-900 to-indigo-800 text-white text-center overflow-hidden"
+      className="relative min-h-[calc(100vh-4.5rem)] sm:min-h-[calc(100vh-5.0rem)] bg-gradient-to-br from-blue-800 via-blue-900 to-indigo-800 text-white text-center overflow-hidden"
     >
       {/* Particle Background */}
       <div className="absolute inset-0">
@@ -30,7 +30,7 @@ const HeroSection = () => {
           init={particlesInit}
           options={{
             particles: {
-              number: { value: window.innerWidth <= 768 ? 25 : 80 }, // Reduce particles on mobile
+              number: { value: window.innerWidth <= 768 ? 25 : 60 }, // Reduce particles on mobile
               size: { value: window.innerWidth <= 768 ? 2 : 4 }, // Smaller particles on mobile
               move: {
                 enable: true,
@@ -39,8 +39,8 @@ const HeroSection = () => {
                 outModes: { default: "out" },
               },
               links: {
-                // enable:  window.innerWidth <= 768 ? false : true,
-                enable:true,
+                enable: window.innerWidth <= 768 ? false : true,
+                // enable:false,
                 color: "#FFFFFF",
                 distance: 200,
               },
@@ -49,7 +49,7 @@ const HeroSection = () => {
                 anim: { enable: true, speed: 1, opacity_min: 0.1 },
               },
             },
-            fullScreen: { enable: false },
+            fullScreen: { enable: window.innerWidth <= 768 ? true : false },
           }}
           className="absolute inset-0 z-0"
         />

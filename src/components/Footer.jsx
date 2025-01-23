@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaPhoneAlt,
-  FaEnvelope,
-} from "react-icons/fa";
-import { MdOutlinePeople } from "react-icons/md";
+import { CONTACT_INFO } from "../constants/constants";
 
 const Footer = () => {
   return (
@@ -19,88 +12,49 @@ const Footer = () => {
 
         {/* Contact Information */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Call Us Section */}
-          <div className="flex flex-col items-center sm:items-start space-y-4">
-            <div className="flex items-center space-x-3">
-              <FaPhoneAlt className="text-yellow-400 text-3xl sm:text-4xl" />
-              <h3 className="text-lg sm:text-xl font-semibold text-white">Call Us:</h3>
-            </div>
-            <p className="text-gray-300 text-sm sm:text-base">
-              <a
-                href="tel:+919059357315"
-                className="hover:underline hover:text-yellow-300"
-              >
-                +91 9059357315
-              </a>
-              <br />
-              <a
-                href="tel:+919328338811"
-                className="hover:underline hover:text-yellow-300"
-              >
-                +91 8328338811
-              </a>
-              <br />
-              <a
-                href="tel:+919030656205"
-                className="hover:underline hover:text-yellow-300"
-              >
-                +91 9030656205
-              </a>
-            </p>
-          </div>
+          {CONTACT_INFO.map((section, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center sm:items-start space-y-4"
+            >
+              {/* Title */}
+              <div className="flex items-center space-x-3">
+                <section.icon className="text-yellow-400 text-3xl sm:text-4xl" />
+                <h3 className="text-lg sm:text-xl font-semibold text-white">
+                  {section.title}
+                </h3>
+              </div>
 
-          {/* Email Section */}
-          <div className="flex flex-col items-center sm:items-start space-y-4">
-            <div className="flex items-center space-x-3">
-              <FaEnvelope className="text-yellow-400 text-3xl sm:text-4xl" />
-              <h3 className="text-lg sm:text-xl font-semibold text-white">Mail:</h3>
+              {/* Items */}
+              {section.title === "Connect With Us:" ? (
+                <div className="flex space-x-8 justify-center sm:justify-start">
+                  {section.items.map((social, socialIndex) => (
+                    <a
+                      key={socialIndex}
+                      href={social.href}
+                      className="text-3xl sm:text-4xl text-gray-300 hover:text-yellow-300 transition duration-300"
+                    >
+                      <social.icon />
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-gray-300 text-sm sm:text-base">
+                  {section.items.map((item, itemIndex) => (
+                    <span key={itemIndex}>
+                      <a
+                        href={item.href}
+                        className="hover:underline hover:text-yellow-300"
+                      >
+                        {item.text}
+                      </a>
+                      <br />
+                    </span>
+                  ))}
+                </p>
+              )}
             </div>
-            <p className="text-gray-300 text-sm sm:text-base">
-              <a
-                href="mailto:chandanamotorstoursandtravels@gmail.com"
-                className="hover:text-yellow-300"
-              >
-                chandanamotorstoursandtravels@gmail.com
-              </a>
-              <br />
-              <a
-                href="mailto:santoshdornala@gmail.com"
-                className="hover:text-yellow-300"
-              >
-                santoshdornala@gmail.com
-              </a>
-            </p>
-          </div>
-
-          {/* Social Media & Connect Section */}
-          <div className="flex flex-col items-center sm:items-start space-y-4">
-            <div className="flex items-center space-x-3">
-              <MdOutlinePeople className="text-yellow-400 text-3xl sm:text-4xl" />
-              <h3 className="text-lg sm:text-xl font-semibold text-white">
-                Connect With Us:
-              </h3>
-            </div>
-            <div className="flex space-x-8 justify-center sm:justify-start">
-              <a
-                href="https://www.facebook.com/profile.php?id=100008401005192"
-                className="text-3xl sm:text-4xl text-gray-300 hover:text-yellow-300 transition duration-300"
-              >
-                <FaFacebookF />
-              </a>
-              <a
-                href="https://www.facebook.com/profile.php?id=100008401005192"
-                className="text-3xl sm:text-4xl text-gray-300 hover:text-yellow-300 transition duration-300"
-              >
-                <FaTwitter />
-              </a>
-              <a
-                href="https://www.facebook.com/profile.php?id=100008401005192"
-                className="text-3xl sm:text-4xl text-gray-300 hover:text-yellow-300 transition duration-300"
-              >
-                <FaLinkedinIn />
-              </a>
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Footer Text */}

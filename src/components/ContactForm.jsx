@@ -20,22 +20,11 @@ const ContactForm = () => {
     if (!formData.firstName) newErrors.firstName = "Name is required.";
     if (!formData.phone) {
       newErrors.phone = "Phone number is required.";
-    }
-    else if (!/^\+?\d{10,}$/.test(formData.phone)) {
+    } else if (!/^\+?\d{10,}$/.test(formData.phone)) {
       newErrors.phone = "Invalid Phone number";
-    }
-    
-    
-    if (!formData.email) {
-      newErrors.email = "Email is required.";
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)
-    ) {
-      newErrors.email = "Invalid email address.";
     }
     return newErrors;
   };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -49,10 +38,10 @@ const ContactForm = () => {
     setIsSubmitting(true); // Start submitting
     emailjs
       .sendForm(
-        "service_j99ja7c",
-        "template_sx16hok",
+        process.env.REACT_APP_SERVICE_KEY, // Service Key
+        process.env.REACT_APP_TEMPLATE_KEY, // Template Key
         e.target,
-        "ebKZhWCmpYszhM6QL"
+        process.env.REACT_APP_UUID // User ID
       )
       .then(
         (result) => {
@@ -61,13 +50,14 @@ const ContactForm = () => {
           );
         },
         (error) => {
+          console.error("Error:", error);
           setResponseMessage(
             "Unable to send your request at this moment. Please contact us at [<a href='tel:+91 9959170817' class='text-yellow-300 underline'>+91 9959170817</a>]."
           );
         }
       )
       .finally(() => {
-        setIsSubmitting(false); // End submitting
+        setIsSubmitting(false);
       });
   };
 
@@ -99,7 +89,7 @@ const ContactForm = () => {
   return (
     <section
       id="contact"
-      className="py-12 bg-gradient-to-br from-blue-800 via-blue-900 to-indigo-800 text-white min-h-[calc(100vh-4.25rem)] flex flex-col"
+      className="py-12 bg-gradient-to-br from-blue-800 via-blue-900 to-indigo-800 text-white min-h-[calc(100vh-4.25rem)] sm:min-h-[calc(100vh-5.0rem)] flex flex-col"
     >
       <motion.h2
         whileInView={{ opacity: 1, y: 0 }}
@@ -112,7 +102,7 @@ const ContactForm = () => {
       <div className="mx-auto flex flex-col justify-center px-6 md:px-12 lg:px-20 xl:px-32 h-auto flex-grow">
         <motion.form
           onSubmit={handleSubmit}
-          className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg space-y-6"
+          className="max-w-2xl  mx-auto bg-white p-8 rounded-lg shadow-lg space-y-6"
           initial="hidden"
           whileInView="visible"
           variants={formVariants}
@@ -163,7 +153,7 @@ const ContactForm = () => {
               htmlFor="email"
               className="block text-sm font-medium text-gray-700"
             >
-              Email <span className="text-red-500">*</span>
+              Email (Optional)
             </label>
             <input
               type="email"
@@ -174,9 +164,6 @@ const ContactForm = () => {
               onChange={handleChange}
               className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary mt-2 text-gray-900"
             />
-            {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-            )}
           </motion.div>
           {/* Phone Field */}
           <motion.div variants={formVariants}>
