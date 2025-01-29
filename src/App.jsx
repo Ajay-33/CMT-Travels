@@ -4,7 +4,7 @@ import HeroSection from "./components/HeroSection";
 import AboutUs from "./components/AboutUs";
 import BusGallery from "./components/BusGallery";
 import Footer from "./components/Footer";
-import ContactForm from "./components/ContactForm"; // Added ContactForm
+import ContactForm from "./components/ContactForm";
 import "./App.css";
 import "animate.css";
 import Services from "./components/Services";

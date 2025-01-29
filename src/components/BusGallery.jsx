@@ -9,11 +9,11 @@ import { FaTimes } from "react-icons/fa";
 
 const imageVariants = {
   hidden: { opacity: 0, scale: 0.95 },
-  visible: {
+  visible: (delay) => ({
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.6, ease: "easeInOut" },
-  },
+    transition: { duration: 0.6, ease: "easeInOut", delay },
+  }),
 };
 
 const galleryVariants = {
@@ -21,8 +21,6 @@ const galleryVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.2,
       duration: 0.6,
       ease: "easeInOut",
     },
@@ -127,6 +125,9 @@ const BusGallery = () => {
                   <motion.div
                     key={subIndex}
                     variants={imageVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    custom={subIndex * 0.2} // Custom delay for each image
                     className="relative overflow-hidden rounded-xl shadow-lg group"
                   >
                     <img

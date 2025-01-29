@@ -50,7 +50,7 @@ const ContactForm = () => {
           );
         },
         (error) => {
-          console.error("Error:", error);
+          // console.error("Error:", error);
           setResponseMessage(
             "Unable to send your request at this moment. Please contact us at [<a href='tel:+91 9959170817' class='text-yellow-300 underline'>+91 9959170817</a>]."
           );
@@ -66,7 +66,7 @@ const ContactForm = () => {
     const formErrors = validate();
     if (Object.keys(formErrors).length === 0) {
       sendEmail(e);
-      console.log("Form Submitted", formData);
+      // console.log("Form Submitted", formData);
     } else {
       setErrors(formErrors);
     }
