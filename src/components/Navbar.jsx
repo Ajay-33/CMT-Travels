@@ -21,7 +21,7 @@ const Navbar = () => {
       {/* Logo Section */}
       <div>
         <img
-          src="/images/logos/logo2.png"
+          src={`${process.env.PUBLIC_URL}/images/logos/logo2.png`}
           alt="CMT Travels Logo"
           className="h-10 w-auto sm:h-12 md:ml-6 object-contain"
         />
