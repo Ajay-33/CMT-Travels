@@ -13,6 +13,9 @@ const Navbar = () => {
         top: element.offsetTop - navbarHeight,
         behavior: "smooth",
       });
+      if (window.innerWidth <= 768) {
+        setIsMenuOpen(!isMenuOpen);
+      }
     }
   };
 
@@ -23,6 +26,7 @@ const Navbar = () => {
         <img
           src={`${process.env.PUBLIC_URL}/images/logos/logo2.png`}
           alt="CMT Travels Logo"
+          onClick={() => scrollToSection("home")}
           className="h-10 w-auto sm:h-12 md:ml-6 object-contain"
         />
       </div>

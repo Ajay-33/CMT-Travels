@@ -74,7 +74,7 @@ export const CONTACT_INFO = [
     icon: FaPhoneAlt,
     title: "Call Us:",
     items: [
-      { text: "+91 9059357315", href: "tel:+919059357315" },
+      { text: "+91 9959170817", href: "tel:+919959170817" },
       { text: "+91 8328338811", href: "tel:+919328338811" },
       { text: "+91 9030656205", href: "tel:+919030656205" },
     ],

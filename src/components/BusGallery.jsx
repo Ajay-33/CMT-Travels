@@ -106,7 +106,6 @@ const BusGallery = () => {
         <Swiper
           modules={[Navigation]}
           navigation
-          lazy
           spaceBetween={20}
           slidesPerView={2}
           autoHeight={true}
@@ -133,7 +132,7 @@ const BusGallery = () => {
                     <img
                       src={src}
                       alt={`Bus ${index * 2 + subIndex + 1}`}
-                      className="swiper-lazy w-full h-48 2xl:h-64 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-48 2xl:h-64 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
                       onClick={() => handleImageClick(src)}
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
