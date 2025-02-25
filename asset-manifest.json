@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/CMT-Travels/static/css/main.08d15ed9.css",
-    "main.js": "/CMT-Travels/static/js/main.fd28fb65.js",
+    "main.js": "/CMT-Travels/static/js/main.744c6b1e.js",
     "static/js/488.c56e565f.chunk.js": "/CMT-Travels/static/js/488.c56e565f.chunk.js",
     "index.html": "/CMT-Travels/index.html",
     "main.08d15ed9.css.map": "/CMT-Travels/static/css/main.08d15ed9.css.map",
-    "main.fd28fb65.js.map": "/CMT-Travels/static/js/main.fd28fb65.js.map",
+    "main.744c6b1e.js.map": "/CMT-Travels/static/js/main.744c6b1e.js.map",
     "488.c56e565f.chunk.js.map": "/CMT-Travels/static/js/488.c56e565f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.08d15ed9.css",
-    "static/js/main.fd28fb65.js"
+    "static/js/main.744c6b1e.js"
   ]
 }
